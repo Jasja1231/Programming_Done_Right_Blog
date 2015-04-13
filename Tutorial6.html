@@ -1,0 +1,541 @@
+
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<style type="text/css">
+
+		
+    .highlight .hll { background-color: #ffffcc }
+.highlight  { background: #f8f8f8; }
+.highlight .c { color: #408080; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #FF0000 } /* Error */
+.highlight .k { color: #008000; font-weight: bold } /* Keyword */
+.highlight .o { color: #666666 } /* Operator */
+.highlight .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #BC7A00 } /* Comment.Preproc */
+.highlight .c1 { color: #408080; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #408080; font-style: italic } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .gr { color: #FF0000 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888888 } /* Generic.Output */
+.highlight .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #0044DD } /* Generic.Traceback */
+.highlight .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #008000 } /* Keyword.Pseudo */
+.highlight .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #B00040 } /* Keyword.Type */
+.highlight .m { color: #666666 } /* Literal.Number */
+.highlight .s { color: #BA2121 } /* Literal.String */
+.highlight .na { color: #7D9029 } /* Name.Attribute */
+.highlight .nb { color: #008000 } /* Name.Builtin */
+.highlight .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+.highlight .no { color: #880000 } /* Name.Constant */
+.highlight .nd { color: #AA22FF } /* Name.Decorator */
+.highlight .ni { color: #999999; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+.highlight .nf { color: #0000FF } /* Name.Function */
+.highlight .nl { color: #A0A000 } /* Name.Label */
+.highlight .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #008000; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #19177C } /* Name.Variable */
+.highlight .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #bbbbbb } /* Text.Whitespace */
+.highlight .mb { color: #666666 } /* Literal.Number.Bin */
+.highlight .mf { color: #666666 } /* Literal.Number.Float */
+.highlight .mh { color: #666666 } /* Literal.Number.Hex */
+.highlight .mi { color: #666666 } /* Literal.Number.Integer */
+.highlight .mo { color: #666666 } /* Literal.Number.Oct */
+.highlight .sb { color: #BA2121 } /* Literal.String.Backtick */
+.highlight .sc { color: #BA2121 } /* Literal.String.Char */
+.highlight .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #BA2121 } /* Literal.String.Double */
+.highlight .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #BA2121 } /* Literal.String.Heredoc */
+.highlight .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+.highlight .sx { color: #008000 } /* Literal.String.Other */
+.highlight .sr { color: #BB6688 } /* Literal.String.Regex */
+.highlight .s1 { color: #BA2121 } /* Literal.String.Single */
+.highlight .ss { color: #19177C } /* Literal.String.Symbol */
+.highlight .bp { color: #008000 } /* Name.Builtin.Pseudo */
+.highlight .vc { color: #19177C } /* Name.Variable.Class */
+.highlight .vg { color: #19177C } /* Name.Variable.Global */
+.highlight .vi { color: #19177C } /* Name.Variable.Instance */
+.highlight .il { color: #666666 } /* Literal.Number.Integer.Long */
+    </style>
+
+
+<style type="text/css">
+/* Overrides of notebook CSS for static HTML export */
+body {
+  overflow: visible;
+  padding: 8px;
+}
+
+div#notebook {
+  overflow: visible;
+  border-top: none;
+}
+
+@media print {
+  div.cell {
+    display: block;
+    page-break-inside: avoid;
+  } 
+  div.output_wrapper { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+  div.output { 
+    display: block;
+    page-break-inside: avoid; 
+  }
+}
+</style>
+
+<!-- Custom stylesheet, it must be in the same directory as the html file -->
+<link rel="stylesheet" href="custom.css">
+
+<!-- Loading mathjax macro -->
+<!-- Load mathjax -->
+    <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <!-- MathJax configuration -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true,
+            processEnvironments: true
+        },
+        // Center justify equations in code and markdown cells. Elsewhere
+        // we use CSS to left justify single line equations in code cells.
+        displayAlign: 'center',
+        "HTML-CSS": {
+            styles: {'.MathJax_Display': {"margin": 0}},
+            linebreaks: { automatic: true }
+        }
+    });
+    </script>
+    <!-- End of mathjax configuration -->
+
+</head>
+<body>
+  <div tabindex="-1" id="notebook" class="border-box-sizing">
+    <div class="container" id="notebook-container">
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Git-Intro">Git Intro<a class="anchor-link" href="#Git-Intro">&#182;</a></h3><p>Git is a version control system. Professional developers use it and you should, too. Almost all job postings require the candidate to know Git or some other version control system. And, I don't mean the GUI application or GitHub; I mean the command line tool that we're going to learn here. So, pay attention!<br>
+Git keeps track of the changes you make to your files in a project so that going back to an earlier version of your code would be easy. Going back between different versions of your code is as easy as typing a command. The details of how this is done is invisible to you, so that you see and use the same files no matter which version of your code you're using.<br>
+Another feature of Git is that it makes it easier for groups to work on the same project. Each team can make a copy of the original code, work on it without touching the original code, and merge the final code with other people's code.<br>
+What we are going to do in this tutorial is:<br></p>
+<ul>
+<li>Learn the different concepts of version control.</li>
+<li>Learn the most useful Git commands.</li>
+<li>Make a GitHub account and set it up to work with Git.</li>
+<li>A Git and GitHub software development workflow<br>
+We will go through all of the above step by step. If you get stuck somewhere, you can watch the follwoing <a href="https://www.youtube.com/watch?v=mYjZtU1-u9Y">video tutorial</a> instead of this tutorial. But, I think this tutorial goes through things at a slower pace than the videos and explains things a bit more clearly.</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-1:-Download-Git-and-Set-It-Up">Step 1: Download Git and Set It Up<a class="anchor-link" href="#Step-1:-Download-Git-and-Set-It-Up">&#182;</a></h3><p>In a terminal, type <code>git</code>. If you see an error, it means you have to download it. You can download it <a href="http://git-scm.com">here</a>. Instructions for downloading and installing it on all operating systems are on that website. If you're using Linux, remember to put <code>sudo</code> before you try to install stuff!<br>
+Type <code>git</code> in a terminal now, you will see some helpful comments.<br>
+When you <code>commit</code> in Git (another word for saving the current state of your files and code to which you can come back in future), your user name and e-mail will be added to help other people figure out who did what. That's why the first thing we need to do know is to set a uesr name and an email for you. Type these two commands in a terminal:<br>
+<code>
+git config --global user.name "Your Name"
+git config --global user.email "YourEmail@blah.blah"
+</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-2:-Create-a-Repository">Step 2: Create a Repository<a class="anchor-link" href="#Step-2:-Create-a-Repository">&#182;</a></h3><p>A repository (from now on we'll call it a 'repo') is a folder where your project files are. You can make any regular folder a repo. Once you've made a repo, the changes made to everything (folders and files) inside it will be tracked by Git. So, using the terminal, create a folder and go insdie it. Once inside, type this:<br>
+<code>git init</code></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-3:-Seeing-the-Status">Step 3: Seeing the Status<a class="anchor-link" href="#Step-3:-Seeing-the-Status">&#182;</a></h3><p>The <code>status</code> command tells you what has changed in your repo. If you type <code>git status</code> in the terminal right now, you will see a message that says that nothing has changed. So, while you're in this repo, create a new file and put some code into it. All of the commands from now on should be typed in the terminal. So, type this:<br>
+<code>git status</code>
+Now, you will see the name of the file you just created under "untracked files".</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-4:-Adding-to-the-Staging-Area">Step 4: Adding to the Staging Area<a class="anchor-link" href="#Step-4:-Adding-to-the-Staging-Area">&#182;</a></h3><p>Before you can commit anything (save the current state of your repo to which you can come back in future), you have to add your changes to the staging area. Once something is in the staging area, it is ready to be committed. This way, you can decide what you would like to commit specifically. So, not all changes that you make have to committed. Remember that adding to the staging area does not mean that you've committed anything yet.<br>
+To add the file you just made to the staging area, do this:<br>
+<code>git add filename</code><br>
+Or, if you want to add all changes to the staging area:<br>
+<code>git add .</code> (there's a dot at the end of the command)<br>
+Now, check the status:<br>
+<code>git status</code><br>
+You will see what is ready to be committed.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-5:-Your-First-Commit">Step 5: Your First Commit<a class="anchor-link" href="#Step-5:-Your-First-Commit">&#182;</a></h3><p>Commits are different than simply saving your changes. After you save your code in a text editor, only a small number of previous changes are saved in the memory. If you restart the application, you will not be able to see what you've changed. Commits, however, keep track of all previous commits and let you go back and forth as many times to any previous change as you like.<br>
+Every commit needs to be documented. For example, for this commit you would have to leave a message saying "first commit, added first file that contains blah blah". To commit what's in the staging area and leave a comment:<br>
+<code>git commit -m "first commit, added new file with some useless test code"</code><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-6:-Log">Step 6: Log<a class="anchor-link" href="#Step-6:-Log">&#182;</a></h3><p><code>git log</code><br>
+This command shows what commits have been done so far. Enter it and see if you see the commit you just made.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Removing-files-from-the-staging-area">Removing files from the staging area<a class="anchor-link" href="#Removing-files-from-the-staging-area">&#182;</a></h3><p>Make a new file called 'dontInclude.txt' in your repo and save it. Check the status and add the new file to the staging area:<br>
+<code>
+git status
+git add dontInclude.txt
+git status
+</code>
+Let's say that you change your mind and don't want to commit this new file yet. Run this:<br>
+<code>git rm --cached dontInclude.txt</code><br>
+<code>git status</code><br>
+You just removed the file from the staging area. The status shows that the file is not "untracked".</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-7:-Changes-in-Files-and-Diff">Step 7: Changes in Files and Diff<a class="anchor-link" href="#Step-7:-Changes-in-Files-and-Diff">&#182;</a></h3><p>While in your repo, make some change to a file that is being tracked. Then, check the status.<br>
+Git will tell you that your file has been modified. To see exactly what has changed:<br>
+<code>git diff</code><br>
+Git will show exactly which lines have been added (+) or removed (-).<br>
+Add the changes to the stagin area and do <code>git diff</code>. This time you will not see any changes. <code>git diff</code> shows only those changes that have been added to the staging area. To see the changes added to the staging area:<br>
+<code>git diff --cached</code><br>
+Now, enter this command:<br>
+<code>git commit</code><br>
+The default console text editor will open. This is where you will write your commit message or comment. Most of the time, if you're using Linux, either nano is now open or vi or vim. Type your message and press <code>:</code> then <code>w</code> then <code>q</code> meaning <code>:wq</code>(in vi or vim) or shift+x then y then enter in nano.<br>
+If you commit too many things and check the log, you'll get stuck in another editor. To get out of that one press shift then <code>z</code> then <code>z</code>.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Some-Useful-Stuff">Some Useful Stuff<a class="anchor-link" href="#Some-Useful-Stuff">&#182;</a></h4><p>To see a shorter version of Git's log, type:<br>
+<code>git log --oneline</code><br></p>
+<p>Before executing the next command, make a few other files and add some code to them and save them.<br>
+Check the status. You'll see a some info about which branch you are on and what you might want to do next.<br>
+<code>git status -s</code><br>
+This command is very useful when the only thing you want to see is the name of the files that have been modified.<br>
+Before going to the next step, do a <code>git diff</code> and read every line that is displayed to get comfortable with how Git represents insertions (code added) and deletions (code deleted). If you've changed more than a few things, you'll see another one of those screens where you can get stuck. Use the arrow keys to scroll down and see the details on all changes. When done, press <code>q</code>.<br></p>
+<p>There's a shortcut for adding and committing your changes in one line. I use this method only when I've made a small change and I'm sure that I want it to be committed. This is usually true when I read my old code and add comments to make the code more readable.<br>
+<code>git commit -a -m "message"</code><br>
+This will add all changes to the staging are and commit them with a message.<br></p>
+<p>We know that adding changes to existing or added files is done by <code>git add fileName</code>. But, this will not work if you have deleted a file. To add a change that consists of deleting a file:<br>
+<code>git rm fileName</code><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-8:-Connecting-to-GitHub">Step 8: Connecting to GitHub<a class="anchor-link" href="#Step-8:-Connecting-to-GitHub">&#182;</a></h3><p>Most students don't have the time or patience to learn Git. What they learn instead is GitHub. GitHub has a GUI application that makes everything we've done so far in Git visual. It's easy to learn and it just works.<br>
+You should use these GUI applications only if:<br></p>
+<ul>
+<li>You know what version control systems do (adding, staging area, commit, branches, push, pull, fork, etc.)</li>
+<li>You have used Git in the terminal for at least a few projects that required you to work with other people</li>
+<li>You are confident that the GUI application makes your workflow more efficient</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>If the above 3 conditions apply to you, then you probably do not use any GUI Git apps!<br>
+To be honest with you, I've heard that most professional developers look down on people who use GitHub's or other GUI applications. And, I've never seen knowing GitHub as a requirement for a job. The reasons why follow:<br>
+Using Git in the terminal is really not that hard. What makes Git hard for some people is the concepts of version control systems. You can learn all the git commands that you need in 10 minutes. What is hard is using Git within a group of developers to build some software. And, that my friend, is the real reason employers want to know if you know Git. Understanding software development using a version control system happens only if you've used within a group.<br>
+The other thing is that when you work within a team at some company, you will not put your code on GitHub. Git will be run locally only.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>I want to teach you how you can connect to GitHub using the terminal so that we can start working on projects together. And, from now on you will be required to keep all of your code on your GitHub account to make it easy for me to check it out.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>To connect to GitHub, you need to have a ssh key. ssh keys have a public and a private part. The private part stays on your computer, and the public part should be added to your GitHub account.<br>
+If you have already installed GitHub's GUI app, you already have ssh key that is shared with GitHub. So, you don't need to do this part of the tutorial. If you've not used the GUI app on the operating system you're using right now, you should follow the following instructions closely!<br></p>
+<ol>
+<li>Go to your home folder. In windows, press the start button and click the folder that is under the user's picture. The folder's name is the same as the current user's name. See if there's a <code>.ssh</code> folder there.<br>
+In Linux, do <code>cd ~</code> then <code>find .ssh</code>. If anythin comes up, then you have a ssh key.<br></li>
+<li>If you don't have this <code>.ssh</code> folder, then you need to make sure you have a ssh key generator. In a terminal, type <code>ssh</code>.</li>
+<li>Assuming that <code>ssh</code> did not throw an error in your terminal, do this:<br>
+<code>ssh-keygen -t rsa -C "youremail@blah.com"</code><br>
+You will be shows where this key will be stored. Press <code>Enter</code>. Then enter your phrase key or password. You will use it whenever you use this ssh key.<br></li>
+<li>Now that you have generated a new ssh key, go to the folder where it's located. Find and open the <code>.pub</code> file. Copy the whole line. You'll need it to set up a connection with GitHub.<br></li>
+<li>Go to your GitHub.com account's settings.<br></li>
+<li>Go to <code>ssh keys</code>.<br></li>
+<li>Then, <code>Add SSH key</code>.<br></li>
+<li>Choose a title that will be helpful for identifying this connection. If you're using multiple computers or operating systems that you want to be connected to GitHub, you will have to go through all the above steps for each one of them. In this page on GitHub, you will see all the connected machines.<br></li>
+<li>Confirm your password (may not be necessary).<br></li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h4 id="Checking-Your-Connection-to-GitHub">Checking Your Connection to GitHub<a class="anchor-link" href="#Checking-Your-Connection-to-GitHub">&#182;</a></h4><p>Go to a terminal and type:<br>
+<code>ssh -T git@github.com</code><br>
+Type <code>yes</code> to continue. Enter your key phrase.<br>
+You will see a message that says you've been successfully authenticated.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Step-9:-Pushing-to-GitHub">Step 9: Pushing to GitHub<a class="anchor-link" href="#Step-9:-Pushing-to-GitHub">&#182;</a></h3><p>Create a folder for a new project and add some files and code to it.<br>
+Initialize a Git repo in that folder and reivew the status of the repo.<br>
+Add and commit changes using a helpful comment.<br>
+Pushing is committing to a remote location. In our case, the remote location is GitHub.<br>
+Go to your GitHub account and make a new repo without a readme file. Once inside that repo, you will see its https or ssh key. Copy it.<br>
+Before we push, we need to give the remote location a name:<br>
+<code>git remote add locationName sshOrHttpsKey</code><br>
+<code>locationName</code> is name you will give to this remote location (meaning GitHub).<br>
+<code>sshOrHttpsKey</code> is the key you just copied from the GitHub page of the GitHub repo you just created.<br>
+If the command is successful, you will see nothing.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Now, you push the changes to the master branch (I'll explain what a branch is later) which is the default branch when you create a new repo:<br>
+<code>git push locationName master</code><br>
+Then, you have to enter your user name for GitHub if you've used the GitHub desktop application so far. If you did the ssh key setup manually, you'll be asked to enter your key phrase or password.<br>
+If all goes well, you'll see something like this:<br>
+<code>
+Counting objects: 7, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 399 bytes | 0 bytes/s, done.
+Total 4 (delta 1), reused 0 (delta 0)
+</code></p>
+<h3 id="An-Error-Explained">An Error Explained<a class="anchor-link" href="#An-Error-Explained">&#182;</a></h3><p>I tried adding files to a GitHub repo that I had created long time ago and got some errors. This is what happened: the GitHub repp contained a folder and some files in it. I created a Git repo on my machine and added some files and code to it. Then, I made ssh keys and added the public one to my GitHub. The next step was making a connection to the GitHub repo where I wanted to push my files and giving it a name. So far, no errors yet. When I tried pushing, I got a bunch of errors telling me that I had to "pull" first before I could push.<br>
+"Pulling" means downloading code that is on a GitHub repo. The command is <code>git pull locationName master</code>. This will download the master branch of the GitHub repo that you identified as locationName.<br>
+So, after you pull, the files in that GitHub repo will be downloaded to your machine. They will be added to the master branch of the Git repo on your machine. Now, you can do a <code>push</code>.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-10:-Branching,-Merging,-and-Cloning">Step 10: Branching, Merging, and Cloning<a class="anchor-link" href="#Step-10:-Branching,-Merging,-and-Cloning">&#182;</a></h2><h3 id="A-Scenario">A Scenario<a class="anchor-link" href="#A-Scenario">&#182;</a></h3><p>Let's say that you want to implement two features for your website. Since you don't have enough time to do this, you bring in your friend to help you out. Version 1.0 of your website is already published and is being used by users. So, you can't touch the original code! What you would do normally (normal for a person who hastn't taken a tutorial like this one) is create a copy of the original code. But, you have to give a copy of the code to your friend, too.<br></p>
+<p>So, now you have 3 copies of the code. You two start coding and implementing those two features. Each of you has a different copy of the code, so you'd have to e-mail (or share a foldre on Google Drive or something) to keep your code synchronized. To let your friend know what changes you're making to the files, you'll have to leave hundreds of lines of comments. When you run the code, there are an error. Why? Because your friend started doing something but is not finished yet. <br></p>
+<p>Now, you two decide that you should really keep your files seperate, because you can't read every line of every file to know what the other person has changed every time you want to code. All is well for a couple of days. There comes a day when you want to incorporate your and your friend's code into Version 1.0 to see if what you've been doing even works. You two sit together and go through every line of every file trying to combine your code.<br></p>
+<p>I hope you see that doing a project in a group of 10 people like this will be impossible.<br></p>
+<p>Enter Git and branching. You can think of what branching does as making a copy of all of your files in the repo. But, you won't see any copies of your files. You will always be working on the same files.<br>
+You finally decide to use Git. You make a branch from Version 1.0 for yourself. Your friend does the same for himself. Your branch is called 'feature1' and his 'feature2'. The Version 1.0 branch remains as the 'master' branch. Why master? Because it holds the code that your customers are using. So, messing with it can have huge consequences. You will combine your changes with the master branch (combining two branches is called merging) only when you've tested it and you are sure that it works and is ready to be used by the customer.<br></p>
+<p>One day, a customer tells you that there's something wrong with the website. You know how to fix it because the code is in the master branch. You're currently working in the 'feature1' branch. So, you change the branch by entering ONE command in the terminal. Magically, all the files that you have open in front of you change to the master branch's files. You realize that have fallen in love with Git!<br></p>
+<p>In the next section, we will go through a scenario similar to the one above using Git. Make sure you follow every step on your machine and GitHub account.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="A-Sample-Workflow">A Sample Workflow<a class="anchor-link" href="#A-Sample-Workflow">&#182;</a></h2><p>Some company has already made a version 1.0 of their software. This version is in the master branch right now. Two teams are working towards version 2.0 by adding two features to v.1.0. Team A has already started coding: they had v.1 on their computers before, so all they had to do was make a new branch. But, Team B needs to first clone the master, and then make a branch.<br>
+You can simulate this situation using only one computer. Make two folder. Each folder will be a repo for a team. Open two terminal windows side by side. Each terminal will simulate a team's repo.<br></p>
+<h3 id="Team-A">Team A<a class="anchor-link" href="#Team-A">&#182;</a></h3><p>Make folder and put a 'readme.md' file into. This readme file tells the user of the repo what the repo is about and how it can be used. Initialize a git in that folder.<br>
+Commit changes made so far.<br>
+Make a GitHub repo with same name and copy its ssh key.<br>
+Connect to this remore repo: <code>git remote add name ssh_key</code><br>
+Push your local repo's master branch to GitHub: <code>git push name master</code><br>
+Your readme file should be in the GitHub repo right now.<br>
+Now, we make version 1.0. Add a couple of files to your local repo and do some coding.<br>
+Commit changes and push to GitHub.<br>
+We're done with v.1.0, so we want to start coding the new features. Team A needs to make a new branch. To see the list of all branches:<br>
+<code>git branch</code><br>
+Make a new branch called 'teama': <code>git branch teama</code><br>
+Now, if you do a <code>git branch</code> you'll see a * next to the master branch. Go to the other branch: <code>git checkout mastera</code><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Team-B">Team B<a class="anchor-link" href="#Team-B">&#182;</a></h3><p>Team B has none of the code right now. So, they need to get version 1.0 first.<br>
+Copy the ssh key of the GitHub repo where the master branch is. Make another folder on you computer. This folder is where Team B will put their code. Initialize a git here.<br>
+Now, Team B needs to copy the code from that GitHub repo. This process of getting code from a remote repo is called cloning.<br>
+<code>git clone ssh_key</code><br>
+Do a log of your repo and you'll see that you have the master branch. Since the other team did not push their brach, you don't have their branch in your folder.<br>
+Make a branch called 'teamb' and add some files and code. Commit changes.<br>
+To push your branch, you need to first make a remote repo: <code>git add remote name ssh_hey</code><br>
+Push teamb branch: <code>git push name teamb</code><br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Team-A">Team A<a class="anchor-link" href="#Team-A">&#182;</a></h3><p>Team A can now see 2 branches on GitHub.<br>
+Write some new code and commit changes. Check the log.<br>
+Push your branch to GitHub. Now, there are 3 branches on GitHub.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>As the teams are working on the features, you are notified of a bug in version 1.0.<br></p>
+<h3 id="Team-B">Team B<a class="anchor-link" href="#Team-B">&#182;</a></h3><p>They change their branch to the master branch: <code>git checkout master</code><br>
+Make some changes to this branch to fix the bug. Commit changes and push to GitHub.<br>
+Now, got to this team's branch: <code>git checkout teamb</code><br>
+Notice that changes made to the master branch are not reflected in this branch yet. What needs to be done is called "merging".<br>
+<code>git merge master</code><br>
+master is the branch that will be merged with the current branch (teamb).  Since, the code in the original master branch is different that the one in the fixed version, there will be some conflicts. Git will tell you that there are conflicts after you merge the master branch. Fixing the conflicts is done manually.<br>
+Let's say that the code fixed was in a 'index.html' file. If you go to that file (or whatever file where you added fixes), you'll see that Git has added some stars and &lt;&lt;&lt;&lt; to highlight the conflicts.<br>
+Remove the code that is not needed and the stars and &lt;&lt;&lt;&lt; stuff. Commit changes. Push to GitHub.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Team-A">Team A<a class="anchor-link" href="#Team-A">&#182;</a></h3><p>Team A knows that a bug has been fixed. They should merge branches. Merging a remote repo with a local repo is called pulling.<br>
+Merge Team A's master branch with the master branch on GitHub. You need to be in Team A's master branch first: <code>git pull remote_name master</code><br>
+Resolve the conflicts and commit changes.<br>
+Changes in the master branch are not reflected in branch 'teama' yet. So, go to this branch and merge it with master:<br>
+<code>
+git checkout teama
+git merge master
+</code>
+Resolve the conflicts and commit changes.</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Please repeat this tutorial if things are still not clear. From now on, we will be using Git and GitHub to do projects and exercises.<br></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In&nbsp;[&nbsp;]:</div>
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython2"><pre> 
+</pre></div>
+
+</div>
+</div>
+</div>
+
+</div>
+    </div>
+  </div>
+</body>
+</html>
